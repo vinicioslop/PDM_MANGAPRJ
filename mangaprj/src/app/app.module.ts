@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+//import { Firebase } from '@ionic-native/firebase';
+
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { HomePage } from '../pages/home/home';
@@ -24,7 +26,10 @@ import { ConfigPage } from '../pages/config/config';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    
+    
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
