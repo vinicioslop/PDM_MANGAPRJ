@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-//import { Firebase } from '@ionic-native/firebase';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database'
 
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -27,8 +28,17 @@ import { ConfigPage } from '../pages/config/config';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    
-    
+
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyBAQSIjLNRAok0EAl0iZgYUnYM-aoCBJTg",
+      authDomain: "mangaprj.firebaseapp.com",
+      databaseURL: "https://mangaprj.firebaseio.com",
+      projectId: "mangaprj",
+      storageBucket: "mangaprj.appspot.com",
+      messagingSenderId: "257075144435",
+      appId: "1:257075144435:web:526c5b91954892d4"
+    }),
+    AngularFireDatabaseModule
 
   ],
   bootstrap: [IonicApp],
@@ -44,7 +54,7 @@ import { ConfigPage } from '../pages/config/config';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }
