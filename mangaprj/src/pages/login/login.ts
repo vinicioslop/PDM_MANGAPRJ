@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { HomePage } from '../home/home';
+import { TabsPage } from '../tabs/tabs';
+import { SignPage } from '../sign/sign';
 
 @IonicPage()
 @Component({
@@ -16,8 +17,12 @@ export class LoginPage {
   ionViewDidLoad() {}
 
   goToHome(){
-    this.navCtrl.push(HomePage);
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot(TabsPage);
+    this.navCtrl.popToRoot();
+  }
+
+  goToSign(){
+    this.navCtrl.push(SignPage);
   }
 
 }

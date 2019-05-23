@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { UserProvider, User } from '../../providers/user/user';
 
-/**
- * Generated class for the SignPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,11 +10,40 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SignPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  model: User;
+  key: string
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private userProvider: UserProvider, 
+    private toast: ToastController)
+    {
+      if (this.navParams.data.user && this.navParams.data.key) {
+        this.model = this.navParams.data.user;
+        this.key =  this.navParams.data.key;
+      } else {
+        this.model = new User();
+      }
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignPage');
+  save() {
+    this.saveUser()
+      .then(() => {
+        this.toast.create({ message: 'Conta criado com sucesso.', duration: 3000, position: 'botton' }).present();
+        this.navCtrl.pop();
+      })
+      .catch(() => {
+        this.toast.create({ message: 'Erro ao criar a conta.', duration: 3000, position: 'botton' }).present();
+      });
   }
-
+ 
+  private saveUser() {
+    if (this.key) {
+      return this.userProvider.update(this.key, this.model);
+    } else {
+      return this.userProvider.insert(this.model);
+    }
+  }
+ 
 }

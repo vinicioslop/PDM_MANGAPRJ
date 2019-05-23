@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Getting Started</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <button ion-button (click)="goToLogin()">Logar</button>
+  <button ion-button (click)="goToSign()">Criar Conta</button>
+
+  <ion-list>
+    <ion-card *ngFor="let item of users" [ngClass]="{'item-inactive': !item.user.active }">
+
+      <ion-card-header>
+        <h1>{{ item.user.name }}</h1>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>{{ item.user.phone }} - {{ item.user.birth | date:'dd/MM/yyyy' }} </p>
+      </ion-card-content>
+
+      <ion-row text-center>
+        <ion-col>
+          <button ion-button icon-left clear small (click)="editUser(item);">
+            <ion-icon name="create"></ion-icon>
+            <div>Editar</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small (click)="removeUser(item);">
+            <ion-icon name="trash"></ion-icon>
+            <div>Excluir</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <a href="tel:{{ item.user.phone }}" ion-button icon-left clear small>
+            <ion-icon name="call"></ion-icon>
+            <div>Ligar</div>
+          </a>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="addUser()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>
