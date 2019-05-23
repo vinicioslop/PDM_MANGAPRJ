@@ -6,6 +6,7 @@
 
 <ion-content padding>
 
+  <button ion-button (click)="goToHome()">Home</button>
   <button ion-button (click)="goToLogin()">Logar</button>
   <button ion-button (click)="goToSign()">Criar Conta</button>
 
@@ -17,7 +18,9 @@
       </ion-card-header>
 
       <ion-card-content>
-        <p>{{ item.user.phone }} - {{ item.user.birth | date:'dd/MM/yyyy' }} </p>
+        <p>Data de Nascimento: {{ item.user.birth | date:'dd/MM/yyyy' }}</p>
+        <p>Login: {{ item.user.login }}</p>
+        <p>Senha: {{ item.user.senha }}</p>
       </ion-card-content>
 
       <ion-row text-center>
@@ -28,16 +31,10 @@
           </button>
         </ion-col>
         <ion-col>
-          <button ion-button icon-left clear small (click)="removeUser(item);">
-            <ion-icon name="trash"></ion-icon>
-            <div>Excluir</div>
+          <button ion-button icon-right clear small (click)="removeUser(item);">
+            <ion-icon color="danger" name="trash"></ion-icon>
+            <div class="del">Excluir</div>
           </button>
-        </ion-col>
-        <ion-col>
-          <a href="tel:{{ item.user.phone }}" ion-button icon-left clear small>
-            <ion-icon name="call"></ion-icon>
-            <div>Ligar</div>
-          </a>
         </ion-col>
       </ion-row>
 

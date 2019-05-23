@@ -16,12 +16,17 @@
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Telefone</ion-label>
-      <ion-input type="tel" name="phone" [(ngModel)]="model.phone"></ion-input>
+      <ion-label stacked>Login</ion-label>
+      <ion-input type="text" name="login" [(ngModel)]="model.login"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Nascimento</ion-label>
+      <ion-label stacked>Senha</ion-label>
+      <ion-input type="text" name="senha" [(ngModel)]="model.senha"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Data de Nascimento</ion-label>
       <ion-datetime displayFormat="DD/MM/YYYY" name="birth" [(ngModel)]="model.birth"></ion-datetime>
     </ion-item>
 

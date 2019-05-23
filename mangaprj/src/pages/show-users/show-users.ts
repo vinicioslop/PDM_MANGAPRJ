@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 
 import {UserProvider, User, UserList} from '../../providers/user/user';
 
+import { TabsPage } from '../tabs/tabs';
+
 import { LoginPage } from '../login/login';
 import { SignPage } from '../sign/sign';
 
@@ -46,6 +48,11 @@ export class ShowUsersPage {
       })
   }
 
+  goToHome(){
+    this.navCtrl.setRoot(TabsPage);
+    this.navCtrl.popToRoot();
+  }
+  
   goToLogin(){
     this.navCtrl.push(LoginPage);
   }

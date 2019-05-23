@@ -49,7 +49,8 @@ export class UserProvider {
  
 export class User {
   name: string;
-  phone: number;
+  login: string;
+  senha: string;
   birth: Date;
   active: boolean;
 }

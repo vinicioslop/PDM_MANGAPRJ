@@ -16,13 +16,4 @@ export class LoginPage {
 
   ionViewDidLoad() {}
 
-  goToHome(){
-    this.navCtrl.setRoot(TabsPage);
-    this.navCtrl.popToRoot();
-  }
-
-  goToSign(){
-    this.navCtrl.push(SignPage);
-  }
-
 }
