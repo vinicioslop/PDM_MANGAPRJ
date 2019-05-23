@@ -15,6 +15,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { FavoritosPage } from '../pages/favoritos/favoritos';
 import { ConfigPage } from '../pages/config/config';
 
+import { MangasProvider } from '../providers/mangas/mangas';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -54,7 +56,8 @@ import { ConfigPage } from '../pages/config/config';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    MangasProvider
   ]
 })
 export class AppModule { }
