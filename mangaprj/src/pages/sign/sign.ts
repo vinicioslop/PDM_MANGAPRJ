@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-
-import { UserProvider, User } from '../../providers/user/user';
+import { NavController, AlertController, IonicPage } from 'ionic-angular';
+import { UserProvider } from '../../providers/user/user';
 
 
 @IonicPage()
@@ -11,40 +10,40 @@ import { UserProvider, User } from '../../providers/user/user';
 })
 export class SignPage {
 
-  model: User;
-  key: string
+  createSuccess = false;
+  registerCredentials = { email: '', password: '' };
 
-  constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    private userProvider: UserProvider, 
-    private toast: ToastController)
-    {
-      if (this.navParams.data.user && this.navParams.data.key) {
-        this.model = this.navParams.data.user;
-        this.key =  this.navParams.data.key;
+  constructor(private nav: NavController, private user: UserProvider, private alertCtrl: AlertController) { }
+ 
+  public register() {
+    this.user.register(this.registerCredentials).subscribe(success => {
+      if (success) {
+        this.createSuccess = true;
+        this.showPopup("Success", "Account created.");
       } else {
-        this.model = new User();
+        this.showPopup("Error", "Problem creating account.");
       }
-  }
-
-  save() {
-    this.saveUser()
-      .then(() => {
-        this.toast.create({ message: 'Conta criado com sucesso.', duration: 3000, position: 'botton' }).present();
-        this.navCtrl.pop();
-      })
-      .catch(() => {
-        this.toast.create({ message: 'Erro ao criar a conta.', duration: 3000, position: 'botton' }).present();
+    },
+      error => {
+        this.showPopup("Error", error);
       });
   }
  
-  private saveUser() {
-    if (this.key) {
-      return this.userProvider.update(this.key, this.model);
-    } else {
-      return this.userProvider.insert(this.model);
-    }
+  showPopup(title, text) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: text,
+      buttons: [
+        {
+          text: 'OK',
+          handler: data => {
+            if (this.createSuccess) {
+              this.nav.popToRoot();
+            }
+          }
+        }
+      ]
+    });
+    alert.present();
   }
- 
 }

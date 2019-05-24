@@ -7,7 +7,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { IonicStorageModule } from '@ionic/storage';
-import { DatePipe } from '@angular/common';
 import { UserProvider } from '../providers/user/user';
 
 import { TabsPage } from '../pages/tabs/tabs';
@@ -21,7 +20,6 @@ import { ConfigPage } from '../pages/config/config';
 import { LoginPage } from '../pages/login/login';
 import { SignPage } from '../pages/sign/sign';
 
-import { MangasProvider } from '../providers/mangas/mangas';
 import { LoginPageModule } from '../pages/login/login.module';
 import { SignPageModule } from '../pages/sign/sign.module';
 import { ShowUsersPageModule } from '../pages/show-users/show-users.module';
@@ -75,9 +73,7 @@ import { ShowUsersPage } from '../pages/show-users/show-users';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    MangasProvider,
-    UserProvider,
-    DatePipe
+    UserProvider
   ]
 })
 export class AppModule { }

@@ -1,61 +1,81 @@
 import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/map';
-import { Storage } from '@ionic/storage';
-import { DatePipe } from '@angular/common';
+import { Observable } from 'rxjs';
+
+export class User {
+  name: string;
+  email: string;
+  senha: string;
+
+  constructor(name: string, email: string, senha: string) {
+    this.name = name;
+    this.email = email;
+    this.senha = senha;
+  }
+}
 
 @Injectable()
 export class UserProvider {
 
-  constructor(private storage: Storage, private datepipe: DatePipe) {
-    
+  access: any;
+
+  currentUser: User;
+  user1 = new User('Administrador', 'adm@adm', 'admin');
+  user2 = new User('Fulano', 'fulano@fulano', '1234');
+  user3 = new User('Ciclano', 'ciclano@ciclano', '1234');
+  user4 = new User('Beltrano', 'beltrano@beltrano', '1234');
+
+  public login(credentials) {
+    if (credentials.email === null || credentials.password === null) {
+      return Observable.throw("Please insert credentials");
+    } else {
+      return Observable.create(observer => {
+
+        if (credentials.email === this.user1.email && credentials.password === this.user1.senha) {
+          this.currentUser = this.user1;
+          this.access = (credentials.password === credentials.password && credentials.email === credentials.email);
+        }
+        if (credentials.email === this.user2.email && credentials.password === this.user2.senha) {
+          this.currentUser = this.user2;
+          this.access = (credentials.password === credentials.password && credentials.email === credentials.email);
+        }
+        if (credentials.email === this.user3.email && credentials.password === this.user3.senha) {
+          this.currentUser = this.user3;
+          this.access = (credentials.password === credentials.password && credentials.email === credentials.email);
+        }
+        if (credentials.email === this.user4.email && credentials.password === this.user4.senha) {
+          this.currentUser = this.user4;
+          this.access = (credentials.password === credentials.password && credentials.email === credentials.email);
+        }
+        observer.next(this.access);
+        observer.complete();
+      });
+
+    }
   }
 
-  public insert(user: User) {
-    let key = this.datepipe.transform(new Date(), "ddMMyyyyHHmmss");
-    return this.save(key, user);
-  }
- 
-  public update(key: string, user: User) {
-    return this.save(key, user);
-  }
- 
-  private save(key: string, user: User) {
-    return this.storage.set(key, user);
-  }
- 
-  public remove(key: string) {
-    return this.storage.remove(key);
-  }
- 
-  public getAll() {
- 
-    let users: UserList[] = [];
- 
-    return this.storage.forEach((value: User, key: string, iterationNumber: Number) => {
-      let user = new UserList();
-      user.key = key;
-      user.user = value;
-      users.push(user);
-    })
-      .then(() => {
-        return Promise.resolve(users);
-      })
-      .catch((error) => {
-        return Promise.reject(error);
+  public register(credentials) {
+    if (credentials.email === null || credentials.password === null) {
+      return Observable.throw("Please insert credentials");
+    } else {
+      // At this point store the credentials to your backend!
+      return Observable.create(observer => {
+        observer.next(true);
+        observer.complete();
       });
+    }
   }
-}
- 
-export class User {
-  name: string;
-  login: string;
-  senha: string;
-  birth: Date;
-  active: boolean;
-}
- 
-export class UserList {
-  key: string;
-  user: User;
+
+  public getUserInfo(): User {
+    return this.currentUser;
+  }
+
+  public logout() {
+    return Observable.create(observer => {
+      this.currentUser = null;
+      observer.next(true);
+      observer.complete();
+    });
+  }
 }
