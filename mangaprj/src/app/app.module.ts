@@ -22,10 +22,9 @@ import { SignPage } from '../pages/sign/sign';
 
 import { LoginPageModule } from '../pages/login/login.module';
 import { SignPageModule } from '../pages/sign/sign.module';
-import { ShowUsersPageModule } from '../pages/show-users/show-users.module';
-import { ShowUsersPage } from '../pages/show-users/show-users';
 import { MangaProvider } from '../providers/manga/manga';
 import { DatePipe } from '@angular/common';
+import { MangaFireProvider } from '../providers/manga-fire/manga-fire';
 
 @NgModule({
   declarations: [
@@ -53,8 +52,7 @@ import { DatePipe } from '@angular/common';
     AngularFireDatabaseModule,
 
     LoginPageModule,
-    SignPageModule,
-    ShowUsersPageModule
+    SignPageModule
 
   ],
   bootstrap: [IonicApp],
@@ -65,7 +63,6 @@ import { DatePipe } from '@angular/common';
 
     LoginPage,
     SignPage,
-    ShowUsersPage,
 
     FavoritosPage,
     ConfigPage,
@@ -77,7 +74,8 @@ import { DatePipe } from '@angular/common';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     DatePipe,
     UserProvider,
-    MangaProvider
+    MangaProvider,
+    MangaFireProvider
   ]
 })
 export class AppModule { }

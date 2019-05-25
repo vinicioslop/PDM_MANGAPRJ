@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>manga-fire-edit</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label stacked>Titulo</ion-label>
+      <ion-input type="text" formControlName="titulo"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.titulo.valid && (form.controls.titulo.dirty || form.controls.titulo.touched)"
+      color="danger">
+      <div [hidden]="!form.controls.name.errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Capa</ion-label>
+      <ion-input type="text" formControlName="capa"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.capa.valid && (form.controls.capa.dirty || form.controls.capa.touched)"
+      color="danger">
+      <div [hidden]="!form.controls.capa.errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Descrição</ion-label>
+      <ion-input type="text" formControlName="descricao"></ion-input>
+    </ion-item>
+    <ion-item
+      *ngIf="!form.controls.descricao.valid && (form.controls.descricao.dirty || form.controls.descricao.touched)"
+      color="danger">
+      <div [hidden]="!form.controls.descricao.errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Faixa Etaria</ion-label>
+      <ion-input type="text" formControlName="faixa_etaria"></ion-input>
+    </ion-item>
+    <ion-item
+      *ngIf="!form.controls.faixa_etaria.valid && (form.controls.faixa_etaria.dirty || form.controls.faixa_etaria.touched)"
+      color="danger">
+      <div [hidden]="!form.controls.faixa_etaria.errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Gênero</ion-label>
+      <ion-input type="text" formControlName="genero"></ion-input>
+    </ion-item>
+    <ion-item
+      *ngIf="!form.controls.genero.valid && (form.controls.genero.dirty || form.controls.genero.touched)"
+      color="danger">
+      <div [hidden]="!form.controls.genero.errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <div padding>
+      <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">Salvar</button>
+    </div>
+  </form>
+
+</ion-content>
