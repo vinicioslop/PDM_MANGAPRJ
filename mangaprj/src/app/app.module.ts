@@ -24,6 +24,8 @@ import { LoginPageModule } from '../pages/login/login.module';
 import { SignPageModule } from '../pages/sign/sign.module';
 import { ShowUsersPageModule } from '../pages/show-users/show-users.module';
 import { ShowUsersPage } from '../pages/show-users/show-users';
+import { MangaProvider } from '../providers/manga/manga';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -73,7 +75,9 @@ import { ShowUsersPage } from '../pages/show-users/show-users';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    UserProvider
+    DatePipe,
+    UserProvider,
+    MangaProvider
   ]
 })
 export class AppModule { }

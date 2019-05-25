@@ -6,4 +6,45 @@
 
 <ion-content padding>
 
+  <ion-list>
+    <ion-card *ngFor="let item of mangas" [ngClass]="{'item-inactive': !item.manga.active }">
+
+      <ion-card-header>
+        <h1>{{ item.manga.name }}</h1>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>{{ item.manga.phone }} - {{ item.manga.birth | date:'dd/MM/yyyy' }} </p>
+      </ion-card-content>
+
+      <ion-row text-center>
+        <ion-col>
+          <button ion-button icon-left clear small (click)="editManga(item);">
+            <ion-icon name="create"></ion-icon>
+            <div>Editar</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small (click)="removeManga(item);">
+            <ion-icon name="trash"></ion-icon>
+            <div>Excluir</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <a href="tel:{{ item.manga.phone }}" ion-button icon-left clear small>
+            <ion-icon name="call"></ion-icon>
+            <div>Ligar</div>
+          </a>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="addManga()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
 </ion-content>

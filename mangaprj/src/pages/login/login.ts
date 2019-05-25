@@ -3,7 +3,7 @@ import { NavController, AlertController, LoadingController, Loading, IonicPage }
 
 import { UserProvider } from '../../providers/user/user';
 
-import { HomePage } from '../home/home';
+import { TabsPage } from '../tabs/tabs';
  
 @IonicPage()
 @Component({
@@ -24,7 +24,7 @@ export class LoginPage {
     this.showLoading()
     this.user.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {        
-        this.nav.setRoot(HomePage);
+        this.nav.setRoot(TabsPage);
       } else {
         this.showError("Access Denied");
       }

@@ -25,6 +25,7 @@ export class UserProvider {
   user2 = new User('Fulano', 'fulano@fulano', '1234');
   user3 = new User('Ciclano', 'ciclano@ciclano', '1234');
   user4 = new User('Beltrano', 'beltrano@beltrano', '1234');
+  user5 = new User('Teste', '1', '1');
 
   public login(credentials) {
     if (credentials.email === null || credentials.password === null) {
@@ -46,6 +47,10 @@ export class UserProvider {
         }
         if (credentials.email === this.user4.email && credentials.password === this.user4.senha) {
           this.currentUser = this.user4;
+          this.access = (credentials.password === credentials.password && credentials.email === credentials.email);
+        }
+        if (credentials.email === this.user5.email && credentials.password === this.user5.senha) {
+          this.currentUser = this.user5;
           this.access = (credentials.password === credentials.password && credentials.email === credentials.email);
         }
         observer.next(this.access);
