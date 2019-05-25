@@ -46,9 +46,12 @@ export class MangaProvider {
 }
 
 export class Manga {
-  name: string;
-  phone: number;
-  birth: Date;
+  titulo: string;
+  descricao: string;
+  capa: string;
+  faixa: string;
+  genero: string;
+  dt_public: Date;
   active: boolean;
 }
 

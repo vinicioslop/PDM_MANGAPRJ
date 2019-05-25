@@ -6,30 +6,45 @@
 
 <ion-content padding>
 
-    <ion-list>
- 
-        <ion-item>
-          <ion-label stacked>Nome</ion-label>
-          <ion-input type="text" name="name" [(ngModel)]="model.name"></ion-input>
-        </ion-item>
-     
-        <ion-item>
-          <ion-label stacked>Telefone</ion-label>
-          <ion-input type="tel" name="phone" [(ngModel)]="model.phone"></ion-input>
-        </ion-item>
-     
-        <ion-item>
-          <ion-label stacked>Nascimento</ion-label>
-          <ion-datetime displayFormat="DD/MM/YYYY" name="birth" [(ngModel)]="model.birth"></ion-datetime>
-        </ion-item>
-     
-        <ion-item>
-          <ion-label>Ativo</ion-label>
-          <ion-checkbox name="active" [(ngModel)]="model.active"></ion-checkbox>
-        </ion-item>
-     
-      </ion-list>
-     
-      <button ion-button block (click)="save()">Salvar</button>
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Título</ion-label>
+      <ion-input type="text" name="titulo" [(ngModel)]="model.titulo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Descrição</ion-label>
+      <ion-input type="text" name="descricao" [(ngModel)]="model.descricao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Link da Capa</ion-label>
+      <ion-input type="text" name="capa" [(ngModel)]="model.capa"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Faixa Etária</ion-label>
+      <ion-input type="text" name="faixa" [(ngModel)]="model.faixa"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Gênero</ion-label>
+      <ion-input type="text" name="genero" [(ngModel)]="model.genero"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Data de Publicação</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" name="dt_public" [(ngModel)]="model.dt_public"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Ativo</ion-label>
+      <ion-checkbox name="active" [(ngModel)]="model.active"></ion-checkbox>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button block (click)="save()">Salvar</button>
 
 </ion-content>
