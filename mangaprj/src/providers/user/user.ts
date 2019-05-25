@@ -21,7 +21,7 @@ export class UserProvider {
   access: any;
 
   currentUser: User;
-  user1 = new User('Administrador', 'adm@adm', 'admin');
+  user1 = new User('Administrador', 'admin@admin', 'admin');
   user2 = new User('Fulano', 'fulano@fulano', '1234');
   user3 = new User('Ciclano', 'ciclano@ciclano', '1234');
   user4 = new User('Beltrano', 'beltrano@beltrano', '1234');
