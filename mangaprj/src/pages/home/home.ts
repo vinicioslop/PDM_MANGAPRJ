@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { MangaFireProvider } from './../../providers/manga-fire/manga-fire';
 import { UserProvider } from '../../providers/user/user';
 
+import { LoginPage } from '../login/login';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -13,7 +15,7 @@ export class HomePage {
 
   mangas: Observable<any>;
 
-  username = '';
+  name = '';
   email = '';
 
   constructor(
@@ -23,10 +25,11 @@ export class HomePage {
     private toast: ToastController
   ) {
     let info = this.user.getUserInfo();
-    this.username = info['name'];
+    this.name = info['name'];
     this.email = info['email'];
 
     this.mangas = this.provider.getAll();
+    console.log();
   }
 
   newManga() {
@@ -55,7 +58,7 @@ export class HomePage {
 
   public logout() {
     this.user.logout().subscribe(succ => {
-      this.navCtrl.setRoot('LoginPage')
+      this.navCtrl.setRoot(LoginPage)
     });
   }
 }

@@ -16,8 +16,8 @@
   <h3>Welcome inside, {{username}}!</h3>
   Your Email is: {{email}}
 
-  <ion-list>
-    <ion-card *ngFor="let manga of mangas | async">
+  <ion-list *ngFor="let manga of mangas | async">
+    <ion-card>
 
       <ion-item>
         <h1 class="titulo">{{ manga.titulo }}</h1>
