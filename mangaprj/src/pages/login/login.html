@@ -1,37 +1,34 @@
-<ion-header>
+ <!--<ion-header>
   <ion-navbar>
     <ion-title>Login</ion-title>
   </ion-navbar>
 </ion-header>
-
-<ion-content padding>
+-->
+<ion-content id="img">
   <div>
     <form (ngSubmit)="login()" #registerForm="ngForm">
       <ion-row>
         <ion-col>
           <ion-list inset>
-
             <ion-item>
-              <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="registerCredentials.email" required>
+              <ion-input type="text" placeholder="E-mail" name="email" [(ngModel)]="registerCredentials.email" required>
               </ion-input>
             </ion-item>
-
             <ion-item>
-              <ion-input type="password" placeholder="Password" name="password"
+              <ion-input type="password" placeholder="Senha" name="password"
                 [(ngModel)]="registerCredentials.password" required></ion-input>
             </ion-item>
-
           </ion-list>
         </ion-col>
       </ion-row>
 
       <ion-row>
-        <ion-col>
-          <button ion-button full type="submit" [disabled]="!registerForm.form.valid">Login</button>
-          <button ion-button block clear (click)="createAccount()">Create New Account</button>
+        <ion-col block>
+          <button ion-button color="light" block type="submit" [disabled]="!registerForm.form.valid">Login</button>
+          <button ion-button color="light" outline  block (click)="createAccount()">Cadastrar</button>
         </ion-col>
       </ion-row>
-
+    
     </form>
   </div>
 </ion-content>
