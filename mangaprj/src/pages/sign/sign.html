@@ -4,7 +4,7 @@
   </ion-navbar>
 </ion-header>
  
-<ion-content padding>
+<ion-content id="img">
   <div>
     
     <form (ngSubmit)="register()" #registerForm="ngForm">
@@ -26,7 +26,7 @@
       
       <ion-row>
         <ion-col>
-          <button ion-button full type="submit" [disabled]="!registerForm.form.valid">Register</button>
+          <button ion-button color="light" block type="submit" [disabled]="!registerForm.form.valid">Criar conta</button>
         </ion-col>
       </ion-row>
       
