@@ -23,7 +23,7 @@ export class EditMangaPage {
   }
 
   save() {
-    this.saveContact()
+    this.saveManga()
       .then(() => {
         this.toast.create({ message: 'Manga salvo.', duration: 3000, position: 'botton' }).present();
         this.navCtrl.pop();
@@ -33,7 +33,7 @@ export class EditMangaPage {
       });
   }
 
-  private saveContact() {
+  private saveManga() {
     if (this.key) {
       return this.mangaProvider.update(this.key, this.model);
     } else {

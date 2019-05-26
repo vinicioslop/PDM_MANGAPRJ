@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController } from 'ionic-angular';
 import { MangaProvider, MangaList } from '../../providers/manga/manga';
+
+import { UserProvider } from '../../providers/user/user';
+
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -11,7 +15,11 @@ export class FavoritosPage {
 
   mangas: MangaList[];
 
-  constructor(public navCtrl: NavController, private mangaProvider: MangaProvider, private toast: ToastController) { }
+  constructor(
+    public navCtrl: NavController, 
+    private mangaProvider: MangaProvider, 
+    private toast: ToastController,
+    private user: UserProvider) { }
 
   ionViewDidEnter() {
     this.mangaProvider.getAll()
@@ -25,7 +33,7 @@ export class FavoritosPage {
   }
 
   editManga(item: MangaList) {
-    this.navCtrl.push('EditMangaPage', { key: item.key, contact: item.manga });
+    this.navCtrl.push('EditMangaPage', { key: item.key, manga: item.manga });
   }
 
   removeManga(item: MangaList) {
@@ -36,6 +44,12 @@ export class FavoritosPage {
         this.mangas.splice(index, 1);
         this.toast.create({ message: 'Manga removido.', duration: 3000, position: 'botton' }).present();
       })
+  }
+
+  public logout() {
+    this.user.logout().subscribe(succ => {
+      this.navCtrl.setRoot(LoginPage)
+    });
   }
 
 }

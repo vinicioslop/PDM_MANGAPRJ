@@ -14,17 +14,17 @@ export class LoginPage {
   loading: Loading;
   registerCredentials = { email: '', password: '' };
  
-  constructor(private nav: NavController, private user: UserProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
+  constructor(private navCtrl: NavController, private user: UserProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
  
   public createAccount() {
-    this.nav.push('SignPage');
+    this.navCtrl.push('SignPage');
   }
  
   public login() {
     this.showLoading()
     this.user.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {        
-        this.nav.setRoot(TabsPage);
+        this.navCtrl.setRoot(TabsPage);
       } else {
         this.showError("Access Denied");
       }

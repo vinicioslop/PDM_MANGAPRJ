@@ -15,21 +15,13 @@ export class HomePage {
 
   mangas: Observable<any>;
 
-  name = '';
-  email = '';
-
   constructor(
     private navCtrl: NavController,
     private user: UserProvider,
     private provider: MangaFireProvider,
     private toast: ToastController
   ) {
-    let info = this.user.getUserInfo();
-    this.name = info['name'];
-    this.email = info['email'];
-
     this.mangas = this.provider.getAll();
-    console.log();
   }
 
   newManga() {

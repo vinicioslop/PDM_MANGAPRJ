@@ -1,9 +1,19 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Configurações</ion-title>
+    <ion-title class="titulo">
+      Configurações
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+
+  <h3>Welcome inside, {{name}}!</h3>
+  Your Email is: {{email}}
 
 </ion-content>

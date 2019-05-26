@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="dark">
+  <ion-navbar>
     <ion-title class="titulo">
       Home Page
     </ion-title>
@@ -13,20 +13,17 @@
 
 <ion-content padding>
 
-  <h3>Welcome inside, {{username}}!</h3>
-  Your Email is: {{email}}
-
-  <ion-list *ngFor="let manga of mangas | async">
+  <ion-list *ngFor="let item of mangas | async">
     <ion-card>
 
       <ion-item>
-        <h1 class="titulo">{{ manga.titulo }}</h1>
+        <h1 class="titulo">{{ item.manga.titulo }}</h1>
       </ion-item>
 
       <img src="{{ manga.capa }}">
 
       <ion-card-content>
-        <p class="desc">{{ manga.descricao }}</p>
+        <p class="desc">{{ item.manga.descricao }}</p>
       </ion-card-content>
 
       <ion-row>
@@ -34,14 +31,14 @@
         <ion-col>
           <button ion-button icon-start clear small>
             <ion-icon name="eye-off" color="danger"></ion-icon>
-            <div class="cat">{{ manga.faixa_etaria }}</div>
+            <div class="cat">{{ item.manga.faixa_etaria }}</div>
           </button>
         </ion-col>
 
         <ion-col>
           <button ion-button icon-start clear small>
             <ion-icon name="bookmark" color="dark"></ion-icon>
-            <div class="gen">{{ manga.genero }}</div>
+            <div class="gen">{{ item.manga.genero }}</div>
           </button>
         </ion-col>
 

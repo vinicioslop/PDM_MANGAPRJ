@@ -1,6 +1,13 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Favoritos</ion-title>
+    <ion-title class="titulo">
+      Favoritos
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -36,6 +43,8 @@
         </ion-col>
 
       </ion-row>
+      <button ion-button color="dark" (click)="editManga(item)" full>Editar</button>
+      <button ion-button color="danger" (click)="removeManga(item)" full>Remover</button>
 
     </ion-card>
   </ion-list>
